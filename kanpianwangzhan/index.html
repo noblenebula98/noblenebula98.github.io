@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看片网站免费-免费看片网站资源_在线影视播放与片单推荐</title>
+<meta name="description" content="看片网站免费主题首页，整理免费在线影视资源、片单分类、播放体验要点与常见问题，帮助访客快速找到想看的内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111a2b'/%3E%3Cpath d='M24 20l22 12-22 12z' fill='%23ffb703'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#111a2b;
+  --ink-2:#1d2a44;
+  --gold:#ffb703;
+  --gold-2:#ffd166;
+  --paper:#f6f7fb;
+  --card:#ffffff;
+  --line:#e2e6ef;
+  --muted:#5b6579;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+.wrap{width:min(1140px,92vw);margin:0 auto}
+
+/* header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(17,26,43,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:18px;letter-spacing:.5px;white-space:nowrap}
+.logo .mark{
+  width:38px;height:38px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(140deg,#ffb703,#ff7b00);
+  display:grid;place-items:center;
+}
+.logo .mark svg{width:20px;height:20px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{
+  color:#c9d1e2;font-size:14.5px;padding:7px 12px;border-radius:9px;
+  transition:.2s;
+}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.header-cta{
+  background:var(--gold);color:#241a00;font-weight:700;font-size:14px;
+  padding:9px 18px;border-radius:10px;white-space:nowrap;transition:.2s;
+}
+.header-cta:hover{background:var(--gold-2)}
+
+/* hero */
+.hero{
+  background:
+    radial-gradient(900px 420px at 82% -10%,rgba(255,183,3,.22),transparent 60%),
+    linear-gradient(160deg,#111a2b 0%,#1a2740 60%,#141e33 100%);
+  color:#fff;padding:64px 0 72px;position:relative;overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:#ffd166;letter-spacing:1px;
+  border:1px solid rgba(255,209,102,.4);border-radius:999px;
+  padding:5px 14px;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(30px,4.4vw,50px);line-height:1.22;font-weight:800;letter-spacing:1px}
+.hero h1 .hl{color:var(--gold)}
+.hero p.lead{margin-top:20px;color:#c5cfe2;font-size:16.5px;max-width:34em}
+.hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:11px;font-weight:700;font-size:15px;transition:.2s;
+}
+.btn-primary{background:var(--gold);color:#241a00}
+.btn-primary:hover{background:var(--gold-2);transform:translateY(-1px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.hero-stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+.hero-stats div strong{display:block;font-size:22px;color:var(--gold)}
+.hero-stats div span{font-size:13px;color:#9fabc4}
+
+/* hero visual */
+.poster-stack{position:relative;height:330px}
+.poster{
+  position:absolute;width:150px;height:212px;border-radius:14px;
+  background:linear-gradient(150deg,#243352,#16203a);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:14px;overflow:hidden;
+}
+.poster::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(150deg,rgba(255,183,3,.28),transparent 55%);
+}
+.poster i{
+  position:relative;display:block;width:34px;height:34px;border-radius:50%;
+  background:rgba(255,183,3,.9);margin-bottom:auto;margin-top:auto;
+  display:grid;place-items:center;
+}
+.poster i::after{content:"";border-left:10px solid var(--ink);border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
+.poster b{position:relative;font-size:13px;color:#fff;font-weight:600}
+.poster small{position:relative;font-size:11px;color:#a9b6cd}
+.p1{left:0;top:52px;transform:rotate(-7deg)}
+.p2{left:96px;top:12px;z-index:2}
+.p3{left:196px;top:64px;transform:rotate(7deg)}
+
+/* sections */
+section{padding:64px 0}
+.sec-head{margin-bottom:34px}
+.sec-tag{font-size:13px;font-weight:700;color:#c07d00;letter-spacing:2px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(22px,2.6vw,30px);font-weight:800;margin-top:6px;letter-spacing:.5px}
+.sec-head p{color:var(--muted);margin-top:10px;max-width:46em;font-size:15.5px}
+
+.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.chip{
+  border:1px solid var(--line);background:#fff;color:var(--ink-2);
+  padding:8px 18px;border-radius:999px;font-size:14px;cursor:pointer;transition:.2s;
+}
+.chip:hover{border-color:var(--gold)}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;transition:.25s;display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(18,28,48,.09);border-color:#d3dae8}
+.card .thumb{
+  height:112px;border-radius:11px;margin-bottom:18px;
+  background:linear-gradient(140deg,#1d2a44,#2f4166);
+  display:grid;place-items:center;position:relative;overflow:hidden;
+}
+.card .thumb::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(220px 90px at 20% 0%,rgba(255,183,3,.35),transparent 65%);
+}
+.card .thumb svg{width:38px;height:38px;position:relative;z-index:1}
+.card h3{font-size:17.5px;font-weight:700;margin-bottom:8px}
+.card p{font-size:14.5px;color:var(--muted);flex:1}
+.card .meta{
+  margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+  display:flex;justify-content:space-between;font-size:13px;color:#8a93a6;
+}
+.card .meta b{color:#c07d00;font-weight:700}
+
+/* list section */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.faq-item{border-bottom:1px solid var(--line);padding:18px 0}
+.faq-item:first-child{padding-top:0}
+.faq-item h3{font-size:16px;font-weight:700;display:flex;gap:10px;align-items:flex-start}
+.faq-item h3 span{color:#c07d00;font-weight:800}
+.faq-item p{font-size:14.5px;color:var(--muted);margin-top:8px;padding-left:26px}
+
+.tips{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.tips h3{font-size:17px;margin-bottom:14px}
+.tips ol{padding-left:20px;color:var(--muted);font-size:14.5px}
+.tips ol li{margin-bottom:10px}
+.tips ol li b{color:var(--ink)}
+
+.note{
+  margin-top:26px;background:#fff8e6;border:1px solid #ffe2a8;border-radius:12px;
+  padding:16px 18px;font-size:14px;color:#7a5600;line-height:1.7;
+}
+
+/* cta band */
+.band{
+  background:linear-gradient(135deg,#111a2b,#22314f);
+  color:#fff;border-radius:20px;padding:44px;display:flex;
+  align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+}
+.band h2{font-size:clamp(20px,2.4vw,26px);font-weight:800}
+.band p{color:#bdc9de;margin-top:8px;font-size:15px;max-width:40em}
+.band .btn-primary{pointer-events:none;opacity:.95}
+
+/* footer */
+footer{background:#0d1524;color:#93a0b8;padding:44px 0 30px;font-size:14px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.09)}
+.foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:17px}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a:hover{color:var(--gold)}
+.foot-bottom{padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:#6f7c94}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .poster-stack{display:none}
+  .grid{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:640px){
+  .nav{display:none}
+  .hero{padding:44px 0 52px}
+  .grid{grid-template-columns:1fr}
+  .hero-stats{gap:22px}
+  .band{padding:30px 22px}
+  .foot-top{flex-direction:column;gap:18px}
+  .header-inner{gap:10px}
+  .logo{font-size:16px}
+  section{padding:48px 0}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="#241a00"/></svg>
+      </span>
+      看片网站免费
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#catalog">影视分类</a>
+      <a href="#picks">片单推荐</a>
+      <a href="#play">播放要点</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="header-cta" href="#catalog">开始找片</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">在线影视 · 免费观看</span>
+        <h1>看片网站免费</h1>
+        <p class="lead">一个看片网站免费主题的信息首页：把常见的影视分类、片单入口和播放体验要点放在一起，帮你用更少的时间找到今晚想看的那一部。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalog">浏览影视分类</a>
+          <a class="btn btn-ghost" href="#picks">查看精选片单</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>5</strong><span>主要影视分类</span></div>
+          <div><strong>3</strong><span>精选主题片单</span></div>
+          <div><strong>4</strong><span>观看常见问题</span></div>
+        </div>
+      </div>
+      <div class="poster-stack" aria-hidden="true">
+        <div class="poster p1"><i></i><b>剧情长片</b><small>约 90–130 分钟</small></div>
+        <div class="poster p2"><i></i><b>系列剧集</b><small>单集 20–50 分钟</small></div>
+        <div class="poster p3"><i></i><b>纪录短片</b><small>约 15–45 分钟</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section id="catalog">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Catalog</div>
+        <h2>按类型挑片，先定今晚看什么</h2>
+        <p>看片网站免费的内容通常按题材与时长划分。先用分类缩小范围，再进入片单看具体条目，比漫无目的地滚动列表更省时间。</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="分类筛选">
+        <button class="chip active" data-filter="all" type="button">全部</button>
+        <button class="chip" data-filter="movie" type="button">电影长片</button>
+        <button class="chip" data-filter="series" type="button">系列剧集</button>
+        <button class="chip" data-filter="doc" type="button">纪录片</button>
+        <button class="chip" data-filter="short" type="button">短片</button>
+      </div>
+
+      <div class="grid" id="cardGrid">
+        <article class="card" data-type="movie">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#ffd166" stroke-width="1.6"/><path d="M10 9.5l5 2.5-5 2.5v-5z" fill="#ffd166"/></svg></div>
+          <h3>电影长片</h3>
+          <p>单部完整叙事，时长多在 90 至 130 分钟。适合整段空闲的晚上，一次看完一个故事。</p>
+          <div class="meta"><span>完整叙事</span><b>整段观看</b></div>
+        </article>
+        <article class="card" data-type="series">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="#ffd166" stroke-width="1.6"/><path d="M8 20h8" stroke="#ffd166" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <h3>系列剧集</h3>
+          <p>分集推进剧情，单集常见 20 到 50 分钟。适合通勤、午休等碎片时间，按集追看更灵活。</p>
+          <div class="meta"><span>分集推进</span><b>碎片观看</b></div>
+        </article>
+        <article class="card" data-type="doc">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#ffd166" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="#ffd166" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <h3>纪录片</h3>
+          <p>以真实题材为主，涵盖自然、人文与生活观察。节奏相对舒缓，适合想安静看点的时段。</p>
+          <div class="meta"><span>真实题材</span><b>节奏舒缓</b></div>
+        </article>
+        <article class="card" data-type="short">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none"><path d="M7 5h10v14H7z" stroke="#ffd166" stroke-width="1.6"/><path d="M10 9h4M10 12h4" stroke="#ffd166" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <h3>短片与微电影</h3>
+          <p>时长通常在 15 到 45 分钟之间，一个核心冲突讲完就收。适合睡前或排队等待时观看。</p>
+          <div class="meta"><span>单点冲突</span><b>短时观看</b></div>
+        </article>
+        <article class="card" data-type="movie">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17V8l5 4 3-6 3 6 5-4v9" stroke="#ffd166" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3>喜剧与轻松向</h3>
+          <p>以笑点和日常情境为主，剧情压力较小。下班后不想动脑时，这类内容往往更容易看下去。</p>
+          <div class="meta"><span>轻量情绪</span><b>放松首选</b></div>
+        </article>
+        <article class="card" data-type="series">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 9.7l5.4-.8L12 4z" stroke="#ffd166" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <h3>高口碑优先</h3>
+          <p>先看评分与简介再决定是否投入时间。口碑稳定的作品通常在前两集就能看出叙事方向。</p>
+          <div class="meta"><span>先看口碑</span><b>降低踩空</b></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Picks -->
+  <section id="picks" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Playlist</div>
+        <h2>三份主题片单，按场景直接开看</h2>
+        <p>片单的作用是替你把选择做完一半。看片网站免费的使用场景不同，适合的片单也不一样，下面三份按观看场景拆分。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>一个人看的深夜片单</h3>
+          <p>偏向慢节奏剧情与人物向作品，对白多、画面安静。建议把字幕调大一号，关掉弹幕类干扰，专注在故事本身。</p>
+          <div class="meta"><span>约 4 部</span><b>深夜时段</b></div>
+        </article>
+        <article class="card">
+          <h3>周末连看剧集片单</h3>
+          <p>挑选分集悬念强的系列剧，一集结束时自然想点下一集。适合连续两三个小时的完整空档，不必反复挑片。</p>
+          <div class="meta"><span>约 3 部</span><b>周末时段</b></div>
+        </article>
+        <article class="card">
+          <h3>十几分钟看完的短片刻单</h3>
+          <p>每部一个完整小故事，适合午休、排队或睡前。看完即收，不会留下追更的负担，也不占用整块时间。</p>
+          <div class="meta"><span>约 6 部</span><b>碎片时段</b></div>
+        </article>
+      </div>
+      <div class="note">提示：片单为观看场景的编排建议，具体片目以站内实际可播放内容为准。遇到无法播放的条目，可换用同分类下的其他作品。</div>
+    </div>
+  </section>
+
+  <!-- Play tips + FAQ -->
+  <section id="play">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Playback</div>
+        <h2>播放要点与常见问题</h2>
+        <p>看片网站免费的体验好坏，往往取决于网络、设备与字幕设置这几个基础环节。先把它们理顺，再谈挑片。</p>
+      </div>
+
+      <div class="split">
+        <div class="tips">
+          <h3>开播前值得做的四件事</h3>
+          <ol>
+            <li><b>先测网络：</b>播放前确认带宽稳定，高清画质对网速要求更高，波动时先切到标清。</li>
+            <li><b>调好字幕：</b>把字幕字号与颜色调到不刺眼，长时间观看更不容易疲劳。</li>
+            <li><b>固定设备：</b>手机、平板与电脑的播放控件位置不同，选定一台常用设备能少走弯路。</li>
+            <li><b>留意时长：</b>先看电影或单集时长，再决定现在开播还是留到有空的时候。</li>
+          </ol>
+        </div>
+
+        <div id="faq">
+          <div class="faq-item">
+            <h3><span>Q1</span>看片网站免费是否意味着全部内容都能直接播放？</h3>
+            <p>免费通常指无需付费即可访问，但具体片目是否可播放取决于站内实际资源状态，部分条目可能因授权或技术原因暂时无法打开。</p>
+          </div>
+          <div class="faq-item">
+            <h3><span>Q2</span>播放卡顿应该先检查什么？</h3>
+            <p>先看网络是否稳定，其次降低画质档位，再尝试刷新页面或更换浏览器。多数卡顿由带宽波动引起，而非内容本身。</p>
+          </div>
+          <div class="faq-item">
+            <h3><span>Q3</span>手机上看需要注意什么？</h3>
+            <p>建议横屏观看并开启自动亮度，同时注意音量。使用移动数据时，高清画质消耗流量较快，可按需切换。</p>
+          </div>
+          <div class="faq-item">
+            <h3><span>Q4</span>如何更快找到想看的内容？</h3>
+            <p>先按类型筛选，再用片单缩小范围，最后看简介与时长决定。比起在长列表里反复滑动，这条路径更省时间。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>把选择交给片单，把时间留给内容</h2>
+          <p>看片网站免费的价值在于减少挑片成本。先定场景，再看分类，最后用片单落地，三步就能开始播放。</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="mark" style="width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,#ffb703,#ff7b00);display:grid;place-items:center;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M8 5l11 7-11 7V5z" fill="#241a00"/></svg>
+        </span>
+        看片网站免费
+      </div>
+      <div class="foot-links">
+        <a href="#catalog">影视分类</a>
+        <a href="#picks">片单推荐</a>
+        <a href="#play">播放要点</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>看片网站免费 · 在线影视信息首页</span>
+      <span>内容以站内实际可播放资源为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = document.querySelectorAll('.chip');
+  var cards = document.querySelectorAll('#cardGrid .card');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      var f = chip.getAttribute('data-filter');
+      cards.forEach(function(card){
+        var show = (f === 'all') || (card.getAttribute('data-type') === f);
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
