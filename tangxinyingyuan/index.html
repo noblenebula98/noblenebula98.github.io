@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>糖心影院-糖心影院热门影片_糖心影院在线观影</title>
+<meta name="description" content="糖心影院首页，汇集热门影片与剧集分类，提供清晰的在线选片入口与观影路径，按类型、口碑与更新节奏筛选想看的作品。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f0506e'/%3E%3Cpath d='M24 18l24 14-24 14z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#111015;
+  --bg-2:#1a1820;
+  --card:#211e29;
+  --line:rgba(255,255,255,.08);
+  --text:#f3eef5;
+  --muted:#a9a1b3;
+  --pink:#f0506e;
+  --pink-2:#ff8fa3;
+  --gold:#f4b942;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* 页头 */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(17,16,21,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;height:68px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;white-space:nowrap}
+.logo-mark{
+  width:36px;height:36px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(140deg,var(--pink),#a63cc8);
+  display:grid;place-items:center;
+}
+.logo-mark svg{width:18px;height:18px}
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav a{
+  font-size:14.5px;color:var(--muted);padding:8px 13px;border-radius:9px;
+  transition:.2s;
+}
+.nav a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav a.primary{color:#fff;background:var(--pink);font-weight:600}
+.nav a.primary:hover{background:#ff6079}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(760px 380px at 82% -10%, rgba(240,80,110,.22), transparent 65%),
+    radial-gradient(620px 320px at 8% 110%, rgba(118,64,216,.20), transparent 60%),
+    var(--bg);
+}
+.hero-inner{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+  padding:62px 0 66px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--pink-2);letter-spacing:1.5px;
+  border:1px solid rgba(240,80,110,.35);border-radius:999px;
+  padding:5px 14px;margin-bottom:20px;
+}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--pink)}
+h1{
+  font-size:clamp(30px,4.4vw,46px);
+  line-height:1.25;font-weight:800;letter-spacing:1px;
+  margin-bottom:18px;
+}
+h1 span{color:var(--pink-2)}
+.hero-lead{color:var(--muted);font-size:16px;max-width:34em;margin-bottom:26px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:11px;font-size:15px;font-weight:600;
+  transition:.2s;cursor:pointer;border:1px solid transparent;
+}
+.btn-main{background:var(--pink);color:#fff}
+.btn-main:hover{background:#ff6079;transform:translateY(-1px)}
+.btn-ghost{border-color:rgba(255,255,255,.18);color:var(--text)}
+.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+.hero-meta b{display:block;font-size:19px;color:var(--text);font-weight:700;line-height:1.4}
+
+/* 首屏海报 */
+.poster{
+  position:relative;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  background:linear-gradient(160deg,#2c2338,#17161d);
+  aspect-ratio:4/3.1;
+  display:grid;place-items:center;
+  box-shadow:0 30px 60px -30px rgba(240,80,110,.5);
+}
+.poster svg{width:100%;height:100%}
+.poster-tag{
+  position:absolute;left:16px;bottom:16px;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.14);
+  padding:7px 14px;border-radius:9px;font-size:13px;color:#fff;
+}
+
+/* 通用区块 */
+section{padding:58px 0}
+.sec-head{margin-bottom:30px;max-width:44em}
+.sec-kicker{font-size:13px;color:var(--pink-2);letter-spacing:2px;font-weight:600;margin-bottom:8px}
+h2{font-size:clamp(22px,2.6vw,28px);font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+.sec-desc{color:var(--muted);font-size:15px}
+
+/* 分类导航 */
+.cats{display:flex;flex-wrap:wrap;gap:10px}
+.cat{
+  padding:10px 18px;border-radius:999px;font-size:14.5px;
+  background:var(--card);border:1px solid var(--line);color:var(--muted);
+  transition:.2s;
+}
+.cat:hover,.cat.on{color:#fff;border-color:rgba(240,80,110,.6);background:rgba(240,80,110,.15)}
+.cat.on{font-weight:600}
+
+/* 影片卡片 */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.film{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:.25s;
+}
+.film:hover{transform:translateY(-3px);border-color:rgba(240,80,110,.4)}
+.thumb{position:relative;aspect-ratio:16/9;background:#2a2634;overflow:hidden}
+.thumb svg{width:100%;height:100%}
+.score{
+  position:absolute;right:10px;top:10px;
+  background:rgba(0,0,0,.6);color:var(--gold);
+  font-size:13px;font-weight:700;padding:3px 9px;border-radius:7px;
+}
+.film-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column}
+.film-body h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+.film-body p{font-size:13.8px;color:var(--muted);flex:1}
+.film-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--pink-2)}
+.film-tags span{background:rgba(240,80,110,.12);padding:3px 9px;border-radius:6px}
+
+/* 筛选控件 */
+.filter-bar{
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 18px;margin-bottom:26px;
+}
+.filter-bar label{font-size:14px;color:var(--muted)}
+.filter-bar input,.filter-bar select{
+  background:#15141a;border:1px solid var(--line);color:var(--text);
+  padding:9px 13px;border-radius:9px;font-size:14px;font-family:inherit;outline:none;
+}
+.filter-bar input:focus,.filter-bar select:focus{border-color:var(--pink)}
+.filter-bar input{flex:1;min-width:160px}
+.filter-count{font-size:13.5px;color:var(--muted);margin-left:auto}
+.empty{color:var(--muted);font-size:14.5px;padding:24px 0;display:none}
+
+/* 两栏内容区 */
+.split{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:start}
+.article p{color:#cfc8d8;font-size:15.5px;margin-bottom:16px}
+.article h3{font-size:18px;font-weight:700;margin:26px 0 12px;color:var(--text)}
+.article ul{list-style:none;display:grid;gap:11px;margin-bottom:8px}
+.article li{
+  position:relative;padding-left:22px;color:#cfc8d8;font-size:15px;
+}
+.article li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:8px;height:8px;border-radius:2px;background:var(--pink);
+}
+.side{display:grid;gap:16px}
+.side-card{
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 22px;
+}
+.side-card h3{font-size:15.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.side-card h3 i{width:4px;height:15px;border-radius:2px;background:var(--pink)}
+.rank{display:grid;gap:10px;counter-reset:r}
+.rank a{
+  display:flex;gap:12px;align-items:baseline;font-size:14.3px;color:#cfc8d8;
+  padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.07);
+}
+.rank a:last-child{border-bottom:none}
+.rank a:hover{color:var(--pink-2)}
+.rank a::before{
+  counter-increment:r;content:counter(r);
+  font-size:12.5px;font-weight:700;color:var(--pink);
+  width:18px;flex:0 0 auto;
+}
+.side-card p{font-size:14px;color:var(--muted)}
+
+/* 观影流程 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px 22px;
+}
+.step-num{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  font-weight:800;font-size:16px;color:#fff;margin-bottom:14px;
+  background:linear-gradient(140deg,var(--pink),#9a3ec8);
+}
+.step h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.step p{font-size:14px;color:var(--muted)}
+
+/* 下载区 */
+.download{
+  background:linear-gradient(150deg,#241b2e,#17161d);
+  border:1px solid rgba(240,80,110,.28);
+  border-radius:22px;padding:38px 34px;
+  display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;
+}
+.download h2{margin-bottom:8px}
+.download p{color:var(--muted);font-size:14.5px;max-width:40em}
+.btn-disabled{
+  background:rgba(255,255,255,.1);color:#d8d1e0;
+  border:1px solid rgba(255,255,255,.16);
+  pointer-events:none;
+}
+
+/* 页尾 */
+footer{
+  border-top:1px solid var(--line);
+  background:var(--bg-2);padding:42px 0 30px;margin-top:20px;
+}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:30px}
+.foot-brand .logo{margin-bottom:12px}
+.foot-brand p{font-size:13.8px;color:var(--muted);max-width:26em}
+footer h4{font-size:14.5px;font-weight:700;margin-bottom:12px;color:var(--text)}
+footer ul{list-style:none;display:grid;gap:8px}
+footer ul a{font-size:14px;color:var(--muted)}
+footer ul a:hover{color:var(--pink-2)}
+.foot-bottom{
+  border-top:1px solid var(--line);padding-top:18px;
+  font-size:13px;color:#7d7689;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:44px 0 48px}
+  .poster{max-width:460px;aspect-ratio:16/10}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr;gap:28px}
+  .steps{grid-template-columns:1fr}
+  .download{grid-template-columns:1fr;padding:30px 24px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:640px){
+  .header-inner{height:auto;flex-direction:column;align-items:flex-start;padding:12px 0;gap:10px}
+  .nav{gap:2px}
+  .nav a{padding:6px 10px;font-size:13.5px}
+  .grid{grid-template-columns:1fr}
+  h1{font-size:28px}
+  section{padding:40px 0}
+  .hero-meta{gap:18px}
+  .foot-top{grid-template-columns:1fr}
+  .filter-bar{padding:14px}
+  .filter-count{margin-left:0;width:100%}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5l11 6.5-11 6.5z" fill="#fff"/></svg>
+      </span>
+      <span>糖心影院</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#films">影片精选</a>
+      <a href="#pick">分类筛选</a>
+      <a href="#guide">观影步骤</a>
+      <a href="#about">关于本站</a>
+      <a class="primary" href="#films">开始选片</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow"><i></i>今日推荐 · 精选片单</span>
+        <h1 id="hero-title">糖心影院</h1>
+        <p class="hero-lead">糖心影院把热门影片、口碑佳作与类型片整理成一份可直接翻阅的片单。先按类型和评分缩小范围，再进入作品页确认简介与看点，让每一次选片都更快落到具体片名上。</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#films">浏览精选影片</a>
+          <a class="btn btn-ghost" href="#pick">按条件筛选</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>6 大</b>常见类型分区</div>
+          <div><b>每日</b>更新推荐顺序</div>
+          <div><b>1 页</b>完成选片判断</div>
+        </div>
+      </div>
+      <div class="poster" aria-hidden="true">
+        <svg viewBox="0 0 400 310" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3a2b4d"/>
+              <stop offset="1" stop-color="#1a1722"/>
+            </linearGradient>
+            <linearGradient id="pk" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f0506e"/>
+              <stop offset="1" stop-color="#a63cc8"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="310" fill="url(#pg)"/>
+          <circle cx="320" cy="70" r="90" fill="url(#pk)" opacity=".28"/>
+          <circle cx="70" cy="250" r="110" fill="#7640d8" opacity=".16"/>
+          <rect x="56" y="70" width="150" height="186" rx="14" fill="#2b2438" stroke="rgba(255,255,255,.12)"/>
+          <circle cx="131" cy="140" r="30" fill="none" stroke="#f0506e" stroke-width="3"/>
+          <path d="M122 128l22 12-22 12z" fill="#f0506e"/>
+          <rect x="80" y="196" width="102" height="8" rx="4" fill="rgba(255,255,255,.25)"/>
+          <rect x="80" y="214" width="66" height="8" rx="4" fill="rgba(255,255,255,.14)"/>
+          <rect x="226" y="96" width="120" height="70" rx="12" fill="#312a40" stroke="rgba(255,255,255,.1)"/>
+          <rect x="242" y="112" width="52" height="8" rx="4" fill="#f4b942"/>
+          <rect x="242" y="130" width="88" height="7" rx="3.5" fill="rgba(255,255,255,.2)"/>
+          <rect x="242" y="146" width="70" height="7" rx="3.5" fill="rgba(255,255,255,.12)"/>
+          <rect x="226" y="180" width="120" height="56" rx="12" fill="#312a40" stroke="rgba(255,255,255,.1)"/>
+          <rect x="242" y="196" width="40" height="7" rx="3.5" fill="#f0506e"/>
+          <rect x="242" y="212" width="82" height="7" rx="3.5" fill="rgba(255,255,255,.18)"/>
+        </svg>
+        <span class="poster-tag">精选片单 · 类型齐全</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影片精选 -->
+  <section id="films">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">FILM PICKS</div>
+        <h2>糖心影院本周精选片单</h2>
+        <p class="sec-desc">从剧情、悬疑到动画与纪录，以下六部作品覆盖不同观看场景。评分与标签用于快速判断是否合口味，点开作品页可查看更完整的简介与主创信息。</p>
+      </div>
+      <div class="grid">
+
+        <article class="film">
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="夜色长镜头海报">
+              <rect width="320" height="180" fill="#232033"/>
+              <circle cx="250" cy="52" r="34" fill="#f0506e" opacity=".55"/>
+              <rect x="30" y="96" width="120" height="56" rx="8" fill="#312a44"/>
+              <path d="M0 152h320v28H0z" fill="#16141e"/>
+              <circle cx="70" cy="60" r="16" fill="none" stroke="#f4b942" stroke-width="3"/>
+            </svg>
+            <span class="score">8.7</span>
+          </div>
+          <div class="film-body">
+            <h3>夜色长镜头</h3>
+            <p>一名夜班摄影师在旧城区记录街景时，意外拼出一段被忽略的往事。节奏舒缓，画面讲究。</p>
+            <div class="film-tags"><span>剧情</span><span>城市</span></div>
+          </div>
+        </article>
+
+        <article class="film">
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雾港来信海报">
+              <rect width="320" height="180" fill="#1d2733"/>
+              <rect x="0" y="120" width="320" height="60" fill="#14202b"/>
+              <path d="M60 120l30-46 30 46z" fill="#2c3d4d"/>
+              <path d="M150 120l40-62 40 62z" fill="#354a5d"/>
+              <circle cx="250" cy="48" r="20" fill="#9fc4dd" opacity=".45"/>
+            </svg>
+            <span class="score">8.2</span>
+          </div>
+          <div class="film-body">
+            <h3>雾港来信</h3>
+            <p>海港小镇的邮差发现一封无人认领的信，顺着地址找到了三个互不相识的收信人。</p>
+            <div class="film-tags"><span>悬疑</span><span>小镇</span></div>
+          </div>
+        </article>
+
+        <article class="film">
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="夏日慢板海报">
+              <rect width="320" height="180" fill="#f4e6d2"/>
+              <circle cx="80" cy="60" r="26" fill="#f4b942"/>
+              <path d="M0 140q80-40 160 0t160 0v40H0z" fill="#8ac6a4"/>
+              <rect x="200" y="70" width="60" height="60" rx="8" fill="#e8a49a"/>
+            </svg>
+            <span class="score">8.5</span>
+          </div>
+          <div class="film-body">
+            <h3>夏日慢板</h3>
+            <p>两个即将升学的少年在最后一个暑假里学琴、骑车、告别，故事干净克制。</p>
+            <div class="film-tags"><span>青春</span><span>成长</span></div>
+          </div>
+        </article>
+
+        <article class="film">
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="星轨列车海报">
+              <rect width="320" height="180" fill="#151a2e"/>
+              <circle cx="60" cy="40" r="2" fill="#fff"/>
+              <circle cx="120" cy="70" r="2" fill="#fff"/>
+              <circle cx="200" cy="36" r="2" fill="#fff"/>
+              <circle cx="270" cy="86" r="2" fill="#fff"/>
+              <path d="M0 132h320v48H0z" fill="#1f2740"/>
+              <rect x="100" y="104" width="120" height="26" rx="10" fill="#f0506e" opacity=".8"/>
+            </svg>
+            <span class="score">8.0</span>
+          </div>
+          <div class="film-body">
+            <h3>星轨列车</h3>
+            <p>一列只在深夜出现的列车，载着乘客去往各自记忆里最想重看的一站。</p>
+            <div class="film-tags"><span>奇幻</span><span>想象</span></div>
+          </div>
+        </article>
+
+        <article class="film">
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="纸上花园海报">
+              <rect width="320" height="180" fill="#eef3ea"/>
+              <path d="M40 150q40-90 80 0z" fill="#8ac6a4"/>
+              <path d="M120 150q40-110 80 0z" fill="#5fa882"/>
+              <path d="M200 150q40-70 80 0z" fill="#b7dcb0"/>
+              <circle cx="160" cy="50" r="16" fill="#f0506e" opacity=".7"/>
+            </svg>
+            <span class="score">8.4</span>
+          </div>
+          <div class="film-body">
+            <h3>纸上花园</h3>
+            <p>手绘动画短片集，用四种画风讲述植物与人的相处，适合安静地看完一整段。</p>
+            <div class="film-tags"><span>动画</span><span>治愈</span></div>
+          </div>
+        </article>
+
+        <article class="film">
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="山那边的手艺人海报">
+              <rect width="320" height="180" fill="#2b2620"/>
+              <path d="M0 130l70-70 60 60 50-40 80 80v20H0z" fill="#4a3f32"/>
+              <circle cx="240" cy="52" r="20" fill="#f4b942" opacity=".7"/>
+              <rect x="30" y="140" width="60" height="10" rx="5" fill="#8c7a5e"/>
+            </svg>
+            <span class="score">8.1</span>
+          </div>
+          <div class="film-body">
+            <h3>山那边的手艺人</h3>
+            <p>纪录片，走访五位仍在用传统方式做木器、造纸与制陶的手艺人，记录他们的日常。</p>
+            <div class="film-tags"><span>纪录</span><span>人文</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类筛选 -->
+  <section id="pick">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">FILTER</div>
+        <h2>按类型与关键词筛选</h2>
+        <p class="sec-desc">糖心影院的片单会随推荐顺序调整。用下方控件输入片名关键词或选择类型，即可在上方片单中定位作品；清空条件后恢复全部。</p>
+      </div>
+      <div class="cats" role="group" aria-label="热门类型">
+        <button class="cat on" type="button" data-type="">全部</button>
+        <button class="cat" type="button" data-type="剧情">剧情</button>
+        <button class="cat" type="button" data-type="悬疑">悬疑</button>
+        <button class="cat" type="button" data-type="青春">青春</button>
+        <button class="cat" type="button" data-type="奇幻">奇幻</button>
+        <button class="cat" type="button" data-type="动画">动画</button>
+        <button class="cat" type="button" data-type="纪录">纪录</button>
+      </div>
+      <div class="filter-bar" style="margin-top:22px">
+        <label for="kw">关键词</label>
+        <input id="kw" type="search" placeholder="输入片名或标签，如 悬疑、花园" autocomplete="off">
+        <label for="sc">评分</label>
+        <select id="sc">
+          <option value="0">不限</option>
+          <option value="8.2">8.2 分以上</option>
+          <option value="8.4">8.4 分以上</option>
+        </select>
+        <span class="filter-count" id="count">共 6 部</span>
+      </div>
+      <p class="empty" id="empty">没有匹配的影片，试试清空关键词或换一个类型。</p>
+    </div>
+  </section>
+
+  <!-- 关于 + 排行 -->
+  <section id="about">
+    <div class="wrap split">
+      <div class="article">
+        <div class="sec-kicker">ABOUT</div>
+        <h2>为什么从这里开始选片</h2>
+        <p>糖心影院的首页只做一件事：把选择变简单。片单里的每一部作品都附有一句短评和两个类型标签，读者不必点进详情就能判断是否对味。评分来自站内汇总，用于横向比较，不替代个人口味。</p>
+        <p>对经常在晚上找片的人来说，最耗时的往往不是观看，而是浏览。糖心影院把常见类型拆开，剧情、悬疑、青春、奇幻、动画与纪录各有入口，配合关键词与评分筛选，能在几十秒内把候选范围缩小到两三部。</p>
+        <h3>使用建议</h3>
+        <ul>
+          <li>先定类型，再看评分：类型决定方向，评分只做同类型内的排序参考。</li>
+          <li>短评只写观看感受与题材，不剧透关键情节。</li>
+          <li>片单顺序会调整，收藏的片名建议记下完整名称。</li>
+          <li>筛选条件可组合，关键词匹配片名与标签两个字段。</li>
+        </ul>
+        <h3>内容说明</h3>
+        <p>页面中的作品条目为片单示例，简介与评分用于说明选片逻辑。糖心影院不提供作品下载，观看入口以作品页实际展示为准。若发现信息有误，可通过页尾反馈渠道告知。</p>
+      </div>
+      <aside class="side">
+        <div class="side-card">
+          <h3><i></i>口碑排序</h3>
+          <div class="rank">
+            <a href="#films">夜色长镜头 · 8.7</a>
+            <a href="#films">夏日慢板 · 8.5</a>
+            <a href="#films">纸上花园 · 8.4</a>
+            <a href="#films">雾港来信 · 8.2</a>
+            <a href="#films">山那边的手艺人 · 8.1</a>
+            <a href="#films">星轨列车 · 8.0</a>
+          </div>
+        </div>
+        <div class="side-card">
+          <h3><i></i>类型速览</h3>
+          <p>剧情与悬疑适合完整时段观看；青春与动画节奏轻，适合碎片时间；纪录类适合安静地看一段人物故事。</p>
+        </div>
+        <div class="side-card">
+          <h3><i></i>更新节奏</h3>
+          <p>片单按周调整推荐顺序，类型与标签保持稳定，方便读者按熟悉的方式检索。</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 观影步骤 -->
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">HOW TO</div>
+        <h2>三步完成一次选片</h2>
+        <p class="sec-desc">糖心影院把选片流程压缩成三个动作，从类型到片名，路径清晰。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>定类型</h3>
+          <p>先想清楚今晚想看什么情绪：紧张、轻松、安静还是想象。对应到悬疑、青春、纪录或奇幻。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>看短评</h3>
+          <p>读一句简介判断题材是否合口，再参考评分在同类型中排序，避免只看分数下决定。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>进作品页</h3>
+          <p>确认主创、时长与简介后进入观看。糖心影院的片单只承担筛选，观看以作品页为准。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载 -->
+  <section>
+    <div class="wrap">
+      <div class="download">
+        <div>
+          <h2>糖心影院片单速查</h2>
+          <p>把当前页面的精选片单与类型标签保存到本地，方便离线对照。文件为页面清单格式，不含视频内容，尺寸与更新状态以实际提供的文件为准。</p>
+        </div>
+        <a class="btn btn-disabled" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5l11 6.5-11 6.5z" fill="#fff"/></svg>
+          </span>
+          <span>糖心影院</span>
+        </a>
+        <p>糖心影院专注片单整理与类型分类，帮助读者用更短的时间找到想看的作品。</p>
+      </div>
+      <div>
+        <h4>浏览</h4>
+        <ul>
+          <li><a href="#films">影片精选</a></li>
+          <li><a href="#pick">分类筛选</a></li>
+          <li><a href="#guide">观影步骤</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>说明</h4>
+        <ul>
+          <li><a href="#about">关于本站</a></li>
+          <li><a href="#about">内容说明</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 糖心影院 · 片单与分类信息仅供选片参考</span>
+      <span>首页内容以页面实际展示为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var films = Array.prototype.slice.call(document.querySelectorAll('.film'));
+  var cats = Array.prototype.slice.call(document.querySelectorAll('.cat'));
+  var kw = document.getElementById('kw');
+  var sc = document.getElementById('sc');
+  var count = document.getElementById('count');
+  var empty = document.getElementById('empty');
+  var activeType = '';
+
+  function apply(){
+    var q = (kw.value || '').trim().toLowerCase();
+    var min = parseFloat(sc.value) || 0;
+    var shown = 0;
+    films.forEach(function(f){
+      var text = f.textContent.toLowerCase();
+      var tags = Array.prototype.map.call(f.querySelectorAll('.film-tags span'), function(s){return s.textContent;});
+      var score = parseFloat(f.querySelector('.score').textContent);
+      var okType = !activeType || tags.indexOf(activeType) > -1;
+      var okKw = !q || text.indexOf(q) > -1;
+      var okScore = score >= min;
+      var show = okType && okKw && okScore;
+      f.style.display = show ? '' : 'none';
+      if(show) shown++;
+    });
+    count.textContent = '共 ' + shown + ' 部';
+    empty.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  cats.forEach(function(c){
+    c.addEventListener('click', function(){
+      cats.forEach(function(x){x.classList.remove('on');});
+      c.classList.add('on');
+      activeType = c.getAttribute('data-type') || '';
+      apply();
+    });
+  });
+  kw.addEventListener('input', apply);
+  sc.addEventListener('change', apply);
+})();
+</script>
+</body>
+</html>
