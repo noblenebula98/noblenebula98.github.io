@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豆包漫画-豆包漫画在线看_豆包漫画免费阅读入口</title>
+<meta name="description" content="豆包漫画主题首页，汇集豆包漫画的阅读入口、热门作品推荐、题材分类与阅读体验说明，帮助你快速找到想看的豆包漫画内容。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4a259'/%3E%3Cpath d='M18 20h28v22a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4z' fill='%23fff7ec'/%3E%3Ccircle cx='26' cy='31' r='3' fill='%23f4a259'/%3E%3Ccircle cx='38' cy='31' r='3' fill='%23f4a259'/%3E%3Cpath d='M24 39q8 6 16 0' stroke='%23f4a259' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#2a2118;
+    --ink-soft:#5d5248;
+    --paper:#fffaf3;
+    --paper-2:#fdf1e3;
+    --line:#ecd9c4;
+    --accent:#e07a3f;
+    --accent-deep:#c25a25;
+    --accent-soft:#fbe3ce;
+    --green:#5b8a6b;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(160,110,60,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{max-width:100%;display:block;}
+  .wrap{width:min(1120px,92vw);margin:0 auto;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,250,243,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:12px 0;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand-mark{
+    width:40px;height:40px;border-radius:12px;
+    background:linear-gradient(140deg,#f6b26b,#e07a3f);
+    display:grid;place-items:center;box-shadow:0 6px 14px rgba(224,122,63,.32);
+  }
+  .brand-name{font-size:1.18rem;font-weight:800;letter-spacing:.5px;}
+  .nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+  .nav-links a{
+    font-size:.92rem;color:var(--ink-soft);padding:7px 12px;border-radius:999px;
+    transition:.2s;
+  }
+  .nav-links a:hover{background:var(--accent-soft);color:var(--accent-deep);}
+  .nav-links a.cta{
+    background:var(--accent);color:#fff;font-weight:600;
+    box-shadow:0 6px 16px rgba(224,122,63,.3);
+  }
+  .nav-links a.cta:hover{background:var(--accent-deep);color:#fff;}
+
+  /* hero */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:54px 0 46px;
+    background:
+      radial-gradient(circle at 88% 12%,rgba(246,178,107,.28),transparent 46%),
+      radial-gradient(circle at 6% 82%,rgba(91,138,107,.14),transparent 44%),
+      var(--paper);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.8rem;font-weight:700;letter-spacing:.16em;
+    color:var(--accent-deep);background:var(--accent-soft);
+    padding:6px 14px;border-radius:999px;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(2.1rem,5vw,3.3rem);
+    line-height:1.15;margin:0 0 18px;font-weight:900;letter-spacing:.5px;
+  }
+  h1 span{color:var(--accent-deep);}
+  .hero p.lead{
+    font-size:1.04rem;color:var(--ink-soft);margin:0 0 26px;max-width:34em;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border-radius:999px;font-weight:700;font-size:.98rem;
+    transition:.2s;border:1.5px solid transparent;cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--accent);color:#fff;
+    box-shadow:0 10px 22px rgba(224,122,63,.32);
+  }
+  .btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px);}
+  .btn-ghost{
+    background:#fff;border-color:var(--line);color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-deep);}
+  .btn[aria-disabled="true"]{
+    opacity:.62;pointer-events:none;cursor:default;
+  }
+  .hero-stats{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap;}
+  .stat b{display:block;font-size:1.32rem;font-weight:900;color:var(--accent-deep);}
+  .stat span{font-size:.82rem;color:var(--ink-soft);}
+
+  .hero-art{
+    background:linear-gradient(160deg,#fff,#fdf0df);
+    border:1px solid var(--line);border-radius:26px;
+    padding:20px;box-shadow:var(--shadow);
+  }
+  .hero-art .frame{
+    border-radius:18px;overflow:hidden;background:var(--paper-2);
+  }
+
+  /* section shell */
+  section{padding:52px 0;}
+  .sec-head{margin-bottom:26px;}
+  .sec-head .eyebrow{
+    font-size:.78rem;font-weight:700;letter-spacing:.18em;
+    color:var(--accent-deep);text-transform:uppercase;
+  }
+  h2{
+    font-size:clamp(1.4rem,3vw,1.9rem);margin:6px 0 8px;font-weight:800;
+  }
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:.95rem;max-width:44em;}
+
+  /* cards */
+  .card-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:.2s;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#f1c9a4;}
+  .card .icon{
+    width:44px;height:44px;border-radius:12px;background:var(--accent-soft);
+    display:grid;place-items:center;margin-bottom:14px;
+  }
+  .card h3{font-size:1.06rem;margin:0 0 8px;font-weight:800;}
+  .card p{margin:0;color:var(--ink-soft);font-size:.92rem;}
+  .card .meta{
+    margin-top:14px;font-size:.8rem;color:var(--accent-deep);font-weight:700;
+  }
+
+  /* works list */
+  .works{
+    background:linear-gradient(180deg,var(--paper-2),var(--paper));
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .work-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .work{
+    display:flex;gap:16px;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:16px;align-items:flex-start;transition:.2s;
+  }
+  .work:hover{border-color:#f1c9a4;box-shadow:var(--shadow);}
+  .work .thumb{
+    width:78px;height:98px;flex-shrink:0;border-radius:10px;overflow:hidden;
+    background:var(--accent-soft);
+  }
+  .work h3{font-size:1rem;margin:2px 0 6px;font-weight:800;}
+  .work p{margin:0;font-size:.87rem;color:var(--ink-soft);}
+  .tag{
+    display:inline-block;font-size:.72rem;font-weight:700;color:var(--green);
+    background:#eaf2ec;padding:2px 9px;border-radius:999px;margin-bottom:6px;
+  }
+  .tag.warm{color:var(--accent-deep);background:var(--accent-soft);}
+
+  /* filter */
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
+  .chip{
+    font-family:inherit;font-size:.86rem;font-weight:600;
+    padding:8px 16px;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-soft);cursor:pointer;transition:.2s;
+  }
+  .chip:hover{border-color:var(--accent);color:var(--accent-deep);}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .filter-note{font-size:.84rem;color:var(--ink-soft);margin:0 0 18px;}
+  .filter-note b{color:var(--accent-deep);}
+
+  /* guide */
+  .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .panel{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;
+  }
+  .panel h3{font-size:1.1rem;margin:0 0 14px;font-weight:800;}
+  .panel ol,.panel ul{margin:0;padding-left:20px;color:var(--ink-soft);font-size:.93rem;}
+  .panel li{margin-bottom:9px;}
+  .panel li b{color:var(--ink);}
+
+  /* faq */
+  .faq{max-width:860px;}
+  details{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin-bottom:12px;
+  }
+  details[open]{border-color:#f1c9a4;box-shadow:var(--shadow);}
+  summary{
+    font-weight:800;font-size:.98rem;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;gap:12px;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--accent);font-size:1.2rem;font-weight:700;}
+  details[open] summary::after{content:"–";}
+  details p{margin:12px 0 0;color:var(--ink-soft);font-size:.92rem;}
+
+  /* cta band */
+  .band{
+    background:linear-gradient(130deg,#e07a3f,#c25a25);
+    color:#fff;border-radius:24px;padding:38px 34px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+    box-shadow:0 18px 40px rgba(194,90,37,.28);
+  }
+  .band h2{margin:0 0 6px;color:#fff;}
+  .band p{margin:0;color:rgba(255,255,255,.86);font-size:.95rem;max-width:38em;}
+  .band .btn-ghost{background:#fff;border-color:#fff;color:var(--accent-deep);}
+
+  /* footer */
+  footer.site{
+    background:#2a2118;color:#cdbfb1;padding:40px 0 26px;margin-top:56px;
+  }
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;}
+  footer .brand-name{color:#fff;}
+  footer p{font-size:.88rem;margin:10px 0 0;line-height:1.8;}
+  footer h4{color:#fff;font-size:.92rem;margin:0 0 10px;font-weight:700;}
+  footer ul{list-style:none;margin:0;padding:0;font-size:.87rem;}
+  footer li{margin-bottom:8px;}
+  footer a:hover{color:var(--accent-soft);}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:18px;
+    font-size:.8rem;color:#9d8f81;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:30px;}
+    .hero-art{order:-1;}
+    .card-grid{grid-template-columns:1fr 1fr;}
+    .work-list{grid-template-columns:1fr;}
+    .guide-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .nav{flex-direction:column;align-items:flex-start;gap:10px;}
+    .nav-links{justify-content:flex-start;}
+    .card-grid{grid-template-columns:1fr;}
+    .hero{padding:34px 0 30px;}
+    section{padding:38px 0;}
+    .band{padding:26px 22px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .hero-stats{gap:18px;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="豆包漫画 首页">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4" width="18" height="15" rx="2.5" stroke="#fff" stroke-width="1.8"/>
+          <circle cx="9" cy="10" r="1.4" fill="#fff"/>
+          <circle cx="15" cy="10" r="1.4" fill="#fff"/>
+          <path d="M8.5 14.5q3.5 2.6 7 0" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-name">豆包漫画</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#works">热门作品</a>
+      <a href="#topics">题材分类</a>
+      <a href="#guide">阅读体验</a>
+      <a href="#faq">常见问题</a>
+      <a href="#works" class="cta">开始阅读</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">轻阅读 · 好故事</span>
+        <h1 id="hero-title">豆包漫画</h1>
+        <p class="lead">豆包漫画是一个围绕轻松阅读与完整故事线展开的漫画主题站，把日常、奇幻、治愈与热血四类内容放在同一入口，让你在一屏之内挑到想看的那一部。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#works">
+            浏览作品
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#topics">看看题材分类</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>4</b><span>主题材分类</span></div>
+          <div class="stat"><b>6</b><span>精选推荐作品</span></div>
+          <div class="stat"><b>每日</b><span>更新阅读入口</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="frame">
+          <svg viewBox="0 0 320 260" role="presentation">
+            <rect width="320" height="260" fill="#fdf1e3"/>
+            <circle cx="258" cy="52" r="34" fill="#f6b26b" opacity=".55"/>
+            <circle cx="60" cy="212" r="42" fill="#5b8a6b" opacity=".18"/>
+            <rect x="34" y="52" width="120" height="150" rx="12" fill="#fff" stroke="#e9cfb5" stroke-width="2"/>
+            <rect x="48" y="68" width="92" height="56" rx="7" fill="#fbe3ce"/>
+            <circle cx="76" cy="90" r="5" fill="#e07a3f"/>
+            <circle cx="112" cy="90" r="5" fill="#e07a3f"/>
+            <path d="M72 106q20 16 40 0" stroke="#e07a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <rect x="48" y="136" width="92" height="7" rx="3.5" fill="#f0dcc7"/>
+            <rect x="48" y="152" width="66" height="7" rx="3.5" fill="#f0dcc7"/>
+            <rect x="48" y="168" width="80" height="7" rx="3.5" fill="#f0dcc7"/>
+            <rect x="172" y="90" width="116" height="112" rx="12" fill="#fff" stroke="#e9cfb5" stroke-width="2"/>
+            <rect x="186" y="106" width="88" height="9" rx="4.5" fill="#e07a3f" opacity=".8"/>
+            <rect x="186" y="124" width="70" height="7" rx="3.5" fill="#f0dcc7"/>
+            <rect x="186" y="140" width="84" height="7" rx="3.5" fill="#f0dcc7"/>
+            <rect x="186" y="156" width="56" height="7" rx="3.5" fill="#f0dcc7"/>
+            <rect x="186" y="176" width="52" height="14" rx="7" fill="#5b8a6b" opacity=".8"/>
+            <path d="M150 220q10 -14 20 0" stroke="#e07a3f" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY / FEATURES -->
+  <section id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">站点概览</span>
+        <h2 id="features-title">在豆包漫画里，先看清再决定</h2>
+        <p>打开页面不必翻很多层。豆包漫画把题材、篇幅与阅读节奏直接写在卡片上，让选择这件事本身变得轻松。</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#c25a25" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <h3>题材一目了然</h3>
+          <p>日常、奇幻、治愈、热血四类并列呈现，每个分类都标注了代表作品与适合的阅读时段，不必猜测内容走向。</p>
+          <span class="meta">四类题材 · 卡片直达</span>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#c25a25" stroke-width="2"/><path d="M12 8v4.5l3 1.8" stroke="#c25a25" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <h3>节奏友好的短篇</h3>
+          <p>推荐作品以单次可读完的短篇为主，通勤、午休或睡前都能完整经历一段故事，不会断在关键处。</p>
+          <span class="meta">单次阅读 · 完整故事</span>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4l2.4 5 5.6.8-4 3.9.9 5.5L12 16.6 7.1 19.2l.9-5.5-4-3.9L9.6 9z" stroke="#c25a25" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>精选而非堆量</h3>
+          <p>首页只保留少量经过挑选的作品，每部都附一句内容概括，避免在长列表里反复滑动却找不到方向。</p>
+          <span class="meta">精选推荐 · 内容概括</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works" class="works" aria-labelledby="works-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">精选作品</span>
+        <h2 id="works-title">豆包漫画本周推荐</h2>
+        <p>以下六部为首页常驻推荐，覆盖四种题材，每部都标注了最合适的阅读场景，方便按心情挑选。</p>
+      </div>
+      <div class="work-list">
+        <article class="work">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 78 98"><rect width="78" height="98" fill="#fbe3ce"/><circle cx="39" cy="38" r="17" fill="#f6b26b"/><circle cx="33" cy="35" r="2.4" fill="#2a2118"/><circle cx="45" cy="35" r="2.4" fill="#2a2118"/><path d="M33 44q6 5 12 0" stroke="#2a2118" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="16" y="66" width="46" height="6" rx="3" fill="#e9cfb5"/><rect x="16" y="78" width="30" height="6" rx="3" fill="#e9cfb5"/></svg>
+          </div>
+          <div>
+            <span class="tag">日常</span>
+            <h3>午后三点半</h3>
+            <p>咖啡馆店员与常客之间的小小默契，用一天里最安静的三十分钟讲完一个温柔的片段。</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 78 98"><rect width="78" height="98" fill="#eaf2ec"/><path d="M39 22l9 18 20 3-14.5 14 3.5 20L39 68l-18 9 3.5-20L10 43l20-3z" fill="#5b8a6b" opacity=".75"/><rect x="16" y="82" width="46" height="6" rx="3" fill="#cfe0d4"/></svg>
+          </div>
+          <div>
+            <span class="tag">奇幻</span>
+            <h3>借月光的人</h3>
+            <p>能短暂借用月光的少年，每晚替邻居解决一件小事，却在某个夜晚接到了自己的委托。</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 78 98"><rect width="78" height="98" fill="#fbe3ce"/><rect x="14" y="26" width="50" height="42" rx="6" fill="#fff" stroke="#e9cfb5" stroke-width="2"/><circle cx="30" cy="44" r="3" fill="#e07a3f"/><circle cx="48" cy="44" r="3" fill="#e07a3f"/><path d="M30 54q9 7 18 0" stroke="#e07a3f" stroke-width="2.4" fill="none" stroke-linecap="round"/><rect x="16" y="80" width="46" height="6" rx="3" fill="#e9cfb5"/></svg>
+          </div>
+          <div>
+            <span class="tag">治愈</span>
+            <h3>修书铺的猫</h3>
+            <p>旧书店里一只会挑书的猫，总把客人引向恰好需要的那一本，故事在纸页与呼噜声之间展开。</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 78 98"><rect width="78" height="98" fill="#fbe3ce"/><path d="M39 18l6 14 15 2-11 10.5 3 15L39 52l-13 7.5 3-15L18 34l15-2z" fill="#e07a3f" opacity=".8"/><rect x="16" y="68" width="46" height="6" rx="3" fill="#e9cfb5"/><rect x="16" y="80" width="28" height="6" rx="3" fill="#e9cfb5"/></svg>
+          </div>
+          <div>
+            <span class="tag">热血</span>
+            <h3>第七次起跑</h3>
+            <p>连续六次落选校队的少年，在第七次尝试里换了方式，把每一次失败都变成下一次的助跑。</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 78 98"><rect width="78" height="98" fill="#eaf2ec"/><circle cx="39" cy="42" r="19" fill="#5b8a6b" opacity=".6"/><path d="M24 40q15-12 30 0" stroke="#2a2118" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="33" cy="40" r="2.2" fill="#2a2118"/><circle cx="45" cy="40" r="2.2" fill="#2a2118"/><rect x="16" y="76" width="46" height="6" rx="3" fill="#cfe0d4"/></svg>
+          </div>
+          <div>
+            <span class="tag warm">日常</span>
+            <h3>阳台上的夏天</h3>
+            <p>两户人家隔着一道阳台，用一个夏天的时间把陌生变成熟悉，结尾是一场没有预告的雨。</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 78 98"><rect width="78" height="98" fill="#fbe3ce"/><path d="M14 70L39 22l25 48z" fill="#f6b26b" opacity=".8"/><circle cx="39" cy="58" r="7" fill="#fff"/><rect x="16" y="82" width="46" height="6" rx="3" fill="#e9cfb5"/></svg>
+          </div>
+          <div>
+            <span class="tag">奇幻</span>
+            <h3>地图边缘的镇</h3>
+            <p>所有地图到这里都会留白，旅人走进小镇后才发现，这里的时间按另一种规则计算。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS + FILTER -->
+  <section id="topics" aria-labelledby="topics-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">题材分类</span>
+        <h2 id="topics-title">按心情挑一部豆包漫画</h2>
+        <p>用下方标签筛选推荐作品，筛选在页面内即时生效，不需要跳转。当前显示：<b id="filter-count">全部 6 部</b></p>
+      </div>
+      <div class="filter-bar" role="group" aria-label="题材筛选">
+        <button class="chip active" data-filter="all" type="button">全部</button>
+        <button class="chip" data-filter="日常" type="button">日常</button>
+        <button class="chip" data-filter="奇幻" type="button">奇幻</button>
+        <button class="chip" data-filter="治愈" type="button">治愈</button>
+        <button class="chip" data-filter="热血" type="button">热血</button>
+      </div>
+      <p class="filter-note" id="filter-note">日常适合碎片时间，奇幻与热血适合完整的一段空闲，治愈类则在睡前读起来最舒服。</p>
+      <div class="card-grid">
+        <article class="card topic-card" data-cat="日常">
+          <h3>日常</h3>
+          <p>把生活里最普通的场景画成故事，节奏慢、对白轻，适合在通勤或等待的间隙读上一段。</p>
+          <span class="meta">代表：午后三点半 · 阳台上的夏天</span>
+        </article>
+        <article class="card topic-card" data-cat="奇幻">
+          <h3>奇幻</h3>
+          <p>设定先行，靠一个新鲜的世界规则推动情节，读的时候需要一点连续的注意力。</p>
+          <span class="meta">代表：借月光的人 · 地图边缘的镇</span>
+        </article>
+        <article class="card topic-card" data-cat="治愈">
+          <h3>治愈</h3>
+          <p>冲突不激烈，情绪落点温和，适合在一天结束时用来收尾，读完通常心情平缓。</p>
+          <span class="meta">代表：修书铺的猫</span>
+        </article>
+        <article class="card topic-card" data-cat="热血">
+          <h3>热血</h3>
+          <p>以目标与坚持为核心，节奏偏快，适合想要一点动力的时候翻开。</p>
+          <span class="meta">代表：第七次起跑</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section id="guide" aria-labelledby="guide-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">阅读体验</span>
+        <h2 id="guide-title">豆包漫画的阅读方式说明</h2>
+        <p>页面本身以阅读为主线，不需要注册即可浏览目录与作品简介；下方说明帮助你更快进入正文。</p>
+      </div>
+      <div class="guide-grid">
+        <div class="panel">
+          <h3>三步找到想看的作品</h3>
+          <ol>
+            <li><b>看题材标签。</b>先确认此刻想看日常还是奇幻，范围会立刻缩小。</li>
+            <li><b>读一句概括。</b>每部作品下方的一句话概括，能判断故事是否对味。</li>
+            <li><b>按场景选择。</b>时间零散选短篇，时间完整可选设定更复杂的作品。</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>阅读时的几点提示</h3>
+          <ul>
+            <li>页面以纵向滚动为主，长条内容按顺序阅读即可，无需横向拖动。</li>
+            <li>作品简介与分类信息均为静态内容，加载完成后即可完整查看。</li>
+            <li>如需离线保存，可使用下方“下载”入口，相关文件正在准备中。</li>
+            <li>遇到内容加载较慢时，刷新页面通常可以恢复。</li>
+          </ul>
+          <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="margin-top:16px;">下载</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">常见问题</span>
+        <h2 id="faq-title">关于豆包漫画的常见疑问</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>豆包漫画需要注册才能看吗？</summary>
+          <p>首页的目录、题材分类与作品简介可以直接浏览，不需要账号。正文阅读入口以页面内链接形式提供，点击即可进入对应内容。</p>
+        </details>
+        <details>
+          <summary>推荐作品会多久更新一次？</summary>
+          <p>首页推荐位按周调整，每次替换会保留四种题材各至少一部，保证不同心情下都有可选内容。</p>
+        </details>
+        <details>
+          <summary>为什么推荐里以短篇为主？</summary>
+          <p>豆包漫画的定位是轻阅读，短篇能在一次阅读时间内完整收束，更适合碎片场景；设定复杂的作品也会标注适合的阅读时段。</p>
+        </details>
+        <details>
+          <summary>手机上看排版会不会挤？</summary>
+          <p>页面针对小屏做了单列适配，导航、卡片与正文会自动排列为纵向阅读顺序，字号与行距按移动端可读性调整。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section aria-labelledby="band-title">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2 id="band-title">从一部短篇开始</h2>
+          <p>不用一次性看完很多，挑一部合眼缘的豆包漫画，把今天的碎片时间填满就好。</p>
+        </div>
+        <a class="btn btn-ghost" href="#works">回到作品列表</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="15" rx="2.5" stroke="#fff" stroke-width="1.8"/>
+              <circle cx="9" cy="10" r="1.4" fill="#fff"/>
+              <circle cx="15" cy="10" r="1.4" fill="#fff"/>
+              <path d="M8.5 14.5q3.5 2.6 7 0" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">豆包漫画</span>
+        </div>
+        <p>一个以轻阅读为出发点的漫画主题站，围绕日常、奇幻、治愈与热血四类内容，帮助读者在短时间内找到合适的故事。</p>
+      </div>
+      <div>
+        <h4>站内导航</h4>
+        <ul>
+          <li><a href="#works">热门作品</a></li>
+          <li><a href="#topics">题材分类</a></li>
+          <li><a href="#guide">阅读体验</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>题材入口</h4>
+        <ul>
+          <li><a href="#topics">日常短篇</a></li>
+          <li><a href="#topics">奇幻设定</a></li>
+          <li><a href="#topics">治愈系</a></li>
+          <li><a href="#topics">热血成长</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>豆包漫画 · 主题首页</span>
+      <span>内容以页面实际展示为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var chips = document.querySelectorAll('.chip[data-filter]');
+    var works = document.querySelectorAll('.work-list .work');
+    var countEl = document.getElementById('filter-count');
+    var noteEl = document.getElementById('filter-note');
+    var notes = {
+      'all':'日常适合碎片时间，奇幻与热血适合完整的一段空闲，治愈类则在睡前读起来最舒服。',
+      '日常':'日常类节奏慢、对白轻，适合通勤、排队或午休这类零散时间。',
+      '奇幻':'奇幻类设定先行，建议留出一段连续时间，跟着世界规则读下去更顺畅。',
+      '治愈':'治愈类冲突温和，适合在一天结束时阅读，用来平缓情绪。',
+      '热血':'热血类节奏偏快，适合需要一点动力的时候翻开。'
+    };
+    function apply(cat){
+      var shown = 0;
+      works.forEach(function(w){
+        var tag = w.querySelector('.tag');
+        var t = tag ? tag.textContent.trim() : '';
+        var match = (cat === 'all') || (t === cat);
+        w.style.display = match ? '' : 'none';
+        if(match) shown++;
+      });
+      countEl.textContent = (cat === 'all' ? '全部 ' : cat + ' ') + shown + ' 部';
+      noteEl.textContent = notes[cat] || notes['all'];
+    }
+    chips.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        chips.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        apply(btn.dataset.filter);
+      });
+    });
+  })();
+</script>
+</body>
+              </html>
