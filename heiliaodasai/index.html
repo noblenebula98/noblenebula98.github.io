@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黑料大赛每日大赛-每日大赛黑料爆料_全网吃瓜聚集地</title>
+<meta name="description" content="黑料大赛每日大赛为吃瓜网友汇集每日大赛黑料爆料与全网热点瓜料，按日期归档每日大赛话题，提供热门榜单、爆料线索与讨论入口，一页看清当天最受关注的瓜。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f1024'/%3E%3Cpath d='M18 20h28v6H18zM18 30h20v6H18zM18 40h28v6H18z' fill='%23ff5d73'/%3E%3Ccircle cx='47' cy='33' r='5' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#150f19;
+    --bg-soft:#1d1522;
+    --panel:#231a29;
+    --line:#3a2b43;
+    --ink:#f3ecf5;
+    --muted:#b9a9c2;
+    --hot:#ff5d73;
+    --gold:#ffd166;
+    --mint:#6ee7b7;
+    --radius:14px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(255,93,115,.16), transparent 60%),
+      radial-gradient(700px 400px at 0% 0%, rgba(110,231,183,.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{max-width:100%;}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(21,15,25,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;gap:18px;min-height:66px;flex-wrap:wrap;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;font-size:17px;}
+  .logo .mark{
+    width:34px;height:34px;border-radius:10px;flex:0 0 auto;
+    background:linear-gradient(135deg,#ff5d73,#ffd166);
+    display:grid;place-items:center;
+    box-shadow:0 6px 18px rgba(255,93,115,.28);
+  }
+  nav.main{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+  nav.main a{
+    font-size:14px;color:var(--muted);padding:7px 12px;border-radius:999px;
+    transition:.2s;white-space:nowrap;
+  }
+  nav.main a:hover,nav.main a:focus-visible{color:#fff;background:var(--panel);outline:none;}
+
+  /* hero */
+  .hero{padding:52px 0 30px;}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center;}
+  .tag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12.5px;color:var(--gold);border:1px solid rgba(255,209,102,.4);
+    background:rgba(255,209,102,.08);padding:5px 12px;border-radius:999px;margin-bottom:16px;
+  }
+  .tag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  h1{
+    font-size:clamp(28px,4.4vw,46px);
+    line-height:1.25;margin:0 0 16px;letter-spacing:1px;font-weight:800;
+  }
+  h1 em{font-style:normal;color:var(--hot);}
+  .lede{color:var(--muted);font-size:15.5px;max-width:38em;margin:0 0 24px;}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:999px;font-size:15px;font-weight:700;
+    border:1px solid transparent;transition:.2s;cursor:pointer;
+  }
+  .btn-primary{background:linear-gradient(135deg,#ff5d73,#ff8355);color:#1a0f14;box-shadow:0 10px 26px rgba(255,93,115,.3);}
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--hot);color:var(--hot);}
+  .btn[aria-disabled="true"]{opacity:.75;pointer-events:none;}
+
+  .hero-art{
+    background:linear-gradient(160deg,#2a1c31,#1a1220);
+    border:1px solid var(--line);border-radius:20px;padding:20px;
+  }
+  .hero-art h2{font-size:13px;letter-spacing:2px;color:var(--muted);margin:0 0 12px;font-weight:600;}
+  .mini-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .mini-list li{display:flex;gap:10px;align-items:flex-start;font-size:14px;}
+  .mini-list .no{
+    flex:0 0 auto;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;
+    font-size:12px;font-weight:800;background:rgba(255,93,115,.16);color:var(--hot);
+  }
+  .mini-list li:nth-child(1) .no{background:rgba(255,209,102,.18);color:var(--gold);}
+  .mini-list li:nth-child(2) .no{background:rgba(110,231,183,.15);color:var(--mint);}
+  .mini-list span.t{color:#e7ddea;}
+
+  /* sections */
+  section{padding:42px 0;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(20px,2.6vw,26px);margin:0;letter-spacing:.5px;}
+  .sec-head p{margin:0;color:var(--muted);font-size:14px;max-width:44em;}
+  .kicker{font-size:12.5px;letter-spacing:3px;color:var(--hot);font-weight:700;margin:0 0 6px;}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;display:flex;flex-direction:column;gap:10px;transition:.2s;
+  }
+  .card:hover{border-color:rgba(255,93,115,.55);transform:translateY(-2px);}
+  .card .badge{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;}
+  .card .badge i{width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;font-style:normal;}
+  .card h3{margin:0;font-size:17px;line-height:1.5;}
+  .card p{margin:0;font-size:14px;color:var(--muted);}
+  .card .more{margin-top:auto;font-size:13.5px;color:var(--hot);font-weight:700;}
+
+  /* archive */
+  .archive{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .day{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;
+    padding:16px;text-align:left;transition:.2s;
+  }
+  .day:hover{border-color:var(--gold);}
+  .day b{display:block;font-size:16px;letter-spacing:.5px;}
+  .day small{color:var(--muted);font-size:12.5px;}
+  .day .n{color:var(--gold);font-weight:800;font-size:13px;margin-top:8px;display:block;}
+
+  /* two col */
+  .split{display:grid;grid-template-columns:1.35fr .65fr;gap:28px;align-items:start;}
+  .prose p{margin:0 0 14px;color:#ddd2e3;font-size:15px;}
+  .prose strong{color:#fff;}
+  .side{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+  }
+  .side h3{margin:0 0 12px;font-size:15px;letter-spacing:1px;color:var(--gold);}
+  .rank{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .rank li{display:flex;gap:10px;font-size:14px;align-items:baseline;}
+  .rank .k{color:var(--muted);font-variant-numeric:tabular-nums;flex:0 0 auto;}
+  .rank a{color:#e9dfef;}
+  .rank a:hover{color:var(--hot);}
+  .rank .heat{margin-left:auto;color:var(--muted);font-size:12px;flex:0 0 auto;}
+
+  /* rules */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
+  .rule .ico{
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:12px;
+    background:rgba(255,93,115,.14);
+  }
+  .rule h3{margin:0 0 8px;font-size:16px;}
+  .rule p{margin:0;font-size:14px;color:var(--muted);}
+
+  .cta-band{
+    background:linear-gradient(135deg,rgba(255,93,115,.16),rgba(255,209,102,.1));
+    border:1px solid rgba(255,93,115,.35);border-radius:18px;
+    padding:30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .cta-band h2{margin:0 0 6px;font-size:22px;}
+  .cta-band p{margin:0;color:var(--muted);font-size:14px;}
+
+  footer.site{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:13.5px;}
+  .foot-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);font-size:15px;}
+  .foot-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--hot);}
+  .copy{margin-top:16px;font-size:12.5px;color:#8b7d95;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .cards,.rules{grid-template-columns:1fr 1fr;}
+    .archive{grid-template-columns:1fr 1fr;}
+    .split{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .bar{min-height:auto;padding:12px 0;gap:10px;}
+    nav.main{margin-left:0;width:100%;overflow-x:auto;padding-bottom:2px;}
+    nav.main a{padding:6px 10px;font-size:13px;}
+    .hero{padding:34px 0 20px;}
+    .lede{font-size:15px;}
+    .cards,.rules,.archive{grid-template-columns:1fr;}
+    section{padding:32px 0;}
+    .cta-band{padding:22px;}
+    .btn{width:100%;justify-content:center;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="#top">
+      <span class="mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16v3H4zM4 11h11v3H4zM4 16h16v3H4z" fill="#1a0f14"/>
+        </svg>
+      </span>
+      <span>黑料大赛每日大赛</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#today">今日大赛</a>
+      <a href="#archive">每日归档</a>
+      <a href="#board">热门榜单</a>
+      <a href="#about">大赛说明</a>
+      <a href="#clue">爆料线索</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag"><span class="dot"></span>每日更新 · 吃瓜现场</span>
+        <h1>黑料大赛每日大赛</h1>
+        <p class="lede">黑料大赛每日大赛把一天之内散落在各个角落的瓜料集中到同一页：谁被点名、哪条线索最热、哪些说法还停在传闻阶段，都按日期排好。想追当天的瓜，从今日大赛开始看就行。</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#today">进入今日大赛</a>
+          <a class="btn btn-ghost" href="#archive">翻每日归档</a>
+        </div>
+      </div>
+      <aside class="hero-art" aria-label="今日大赛速览">
+        <h2>今日速览</h2>
+        <ul class="mini-list">
+          <li><span class="no">1</span><span class="t">晚间档新瓜集中放出，讨论量在半小时内明显上升</span></li>
+          <li><span class="no">2</span><span class="t">旧料被重新翻出，与当天话题形成交叉讨论</span></li>
+          <li><span class="no">3</span><span class="t">多条线索只有单方说法，尚未出现正面回应</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="today">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">TODAY</p>
+          <h2>今日大赛看点</h2>
+        </div>
+        <p>每天的大赛由若干条独立线索组成，下面三类是最常被翻到的位置：新放出的瓜、被翻旧的瓜、以及还在等回应的话题。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="badge"><i></i>新料上线</span>
+          <h3>当天新放出的瓜，先看时间线</h3>
+          <p>新料往往以截图、片段或一段自述开场，信息零散。先把发布顺序理清，比急着下结论更有用。</p>
+          <span class="more">查看线索 →</span>
+        </article>
+        <article class="card">
+          <span class="badge"><i></i>旧瓜回炉</span>
+          <h3>被重新翻出的旧话题</h3>
+          <p>旧料再热通常因为出现了新对照。原来的说法有没有被补充、被推翻，是判断热度的关键。</p>
+          <span class="more">查看线索 →</span>
+        </article>
+        <article class="card">
+          <span class="badge"><i></i>待回应</span>
+          <h3>只有单方说法的争议</h3>
+          <p>这类内容最容易在传播中变形。标记为“待回应”的条目，会持续等待当事人或相关方补充。</p>
+          <span class="more">查看线索 →</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="archive">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">ARCHIVE</p>
+          <h2>每日大赛归档</h2>
+        </div>
+        <p>黑料大赛每日大赛按日期留存每天的瓜单，方便回头对照。翻旧日期时，注意当时的信息与现在的结论可能已经不同。</p>
+      </div>
+      <div class="archive">
+        <a class="day" href="#today"><b>今日</b><small>当天新放出的瓜与讨论</small><span class="n">焦点 6 条</span></a>
+        <a class="day" href="#board"><b>昨日</b><small>延续到今天的旧话题</small><span class="n">焦点 9 条</span></a>
+        <a class="day" href="#board"><b>本周</b><small>一周内被反复提起的瓜</small><span class="n">焦点 21 条</span></a>
+        <a class="day" href="#clue"><b>更早</b><small>按日期回查的历史瓜单</small><span class="n">持续补充</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="board">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="kicker">READ</p>
+        <h2 style="margin:0 0 16px;font-size:clamp(20px,2.6vw,26px);">怎么读一场黑料大赛</h2>
+        <p><strong>先看来源，再看热度。</strong>黑料大赛每日大赛里的每一条瓜，最初都来自某个具体的发布位置：一段聊天记录、一条删掉的动态、一次直播里的口误。热度高不等于内容真，讨论多也不代表已经核实。先找到最早出现的那一条，后面的转发和二次加工才有参照。</p>
+        <p><strong>把“传闻”和“回应”分开记。</strong>大部分瓜在当天只有单方说法，这时候最稳妥的处理是把它标成待确认，而不是当成结论。等到相关方回应、或者出现可对照的材料，再回头看这条瓜会清楚很多。每日大赛的归档价值，也正在于能让你看到一条瓜从传闻到有回应的过程。</p>
+        <p><strong>别把旧日期当结论。</strong>翻归档时会遇到几个月前的话题。当时的判断可能已经被后来的信息修正，直接引用旧结论容易出错。看日期、看后续，是读旧瓜单的基本习惯。黑料大赛每日大赛保留日期标记，就是为了让每条瓜都有清晰的时间坐标。</p>
+        <p><strong>围观有边界。</strong>瓜料里常涉及普通人，转发前想一想这条内容会不会把无关的人卷进来。讨论归讨论，越界的信息不传，反而能让大赛里的重点更清楚。</p>
+      </div>
+      <aside class="side" aria-label="热门榜单">
+        <h3>当前热度榜</h3>
+        <ol class="rank">
+          <li><span class="k">01</span><a href="#today">晚间档新瓜集中放出</a><span class="heat">高</span></li>
+          <li><span class="k">02</span><a href="#today">旧料与新话题交叉</a><span class="heat">高</span></li>
+          <li><span class="k">03</span><a href="#today">单方说法等待回应</a><span class="heat">中</span></li>
+          <li><span class="k">04</span><a href="#archive">本周被反复提起的瓜</a><span class="heat">中</span></li>
+          <li><span class="k">05</span><a href="#clue">用户提交的线索</a><span class="heat">新</span></li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">RULES</p>
+          <h2>大赛说明</h2>
+        </div>
+        <p>黑料大赛每日大赛是一个按天组织的瓜料汇集页，不对任何单条内容作真伪背书。下面三条是浏览时最常被用到的约定。</p>
+      </div>
+      <div class="rules">
+        <div class="rule">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5d73" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/>
+            </svg>
+          </span>
+          <h3>按日期归位</h3>
+          <p>每条瓜都挂在首次出现的那一天，后续进展不另起新日期，而是在原条目下补充，避免同一件事被拆成多条。</p>
+        </div>
+        <div class="rule">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round">
+              <path d="M12 3l8 4v5c0 4.5-3.4 7.7-8 9-4.6-1.3-8-4.5-8-9V7z"/>
+            </svg>
+          </span>
+          <h3>标注确定程度</h3>
+          <p>条目会区分“传闻”“单方说法”“已有回应”等状态。状态不等于结论，只表示这条瓜目前走到了哪一步。</p>
+        </div>
+        <div class="rule">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round">
+              <path d="M4 18l5-6 4 3 7-9"/><path d="M4 21h16"/>
+            </svg>
+          </span>
+          <h3>回应优先</h3>
+          <p>当事人或相关方作出回应的，会优先更新在原条目上。没有回应的瓜，长期停留在待确认状态，不强行给出答案。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="clue">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>有线索？交给每日大赛</h2>
+          <p>看到值得记录的瓜、截图或时间线，可以按日期归档到黑料大赛每日大赛。提交前请确认内容不涉及无关的普通人。</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#today">去今日大赛查看</a>
+          <a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="mark" aria-hidden="true" style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#ff5d73,#ffd166);display:grid;place-items:center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v3H4zM4 11h11v3H4zM4 16h16v3H4z" fill="#1a0f14"/></svg>
+          </span>
+          <span>黑料大赛每日大赛</span>
+        </div>
+        <p class="copy">按日期汇集每日瓜料，标注确定程度，回应优先更新。页面内容不对单条信息作真伪背书。</p>
+      </div>
+      <div class="foot-links">
+        <a href="#today">今日大赛</a>
+        <a href="#archive">每日归档</a>
+        <a href="#board">热门榜单</a>
+        <a href="#about">大赛说明</a>
+        <a href="#clue">爆料线索</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
